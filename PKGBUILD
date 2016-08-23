@@ -1,0 +1,47 @@
+# Maintainer: Andreas Grapentin <andreas@grapentin.org>
+pkgname=vmdebootstrap
+pkgver=1.6
+pkgrel=1
+pkgdesc="Create Debian disk images"
+arch=('i686' 'x86_64')
+
+url="http://git.liw.fi/cgi-bin/cgit/cgit.cgi/vmdebootstrap/"
+license=('GPL3')
+
+depends=('debootstrap'
+         'syslinux'
+         'qemu'
+         'parted'
+         'multipath-tools'
+         'python2-cliapp'
+         'distro-info')
+
+source=("http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-$pkgver.tar.gz"
+        'python_version.patch'
+        'default_arch.patch'
+        'fix_path.patch')
+
+md5sums=('90dd5a8aff602273c76644dda166e3e7'
+         '9ec42862d167c76139f453ed9651dd8e'
+         '3c3d9df067faa0d742011ad0943427e9'
+         '073ecc1134ce3bd2cd4febf02a0264f1')
+
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  patch -p1 < ../python_version.patch
+  patch -p1 < ../default_arch.patch
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  mkdir -p ${pkgdir}/usr/share/doc/$pkgname
+  cp COPYING ${pkgdir}/usr/share/doc/$pkgname
+  cp README ${pkgdir}/usr/share/doc/$pkgname
+  mkdir -p ${pkgdir}/usr/share/licenses/$pkgname
+  cd ${pkgdir}/usr/share/licenses/$pkgname
+  ln -s ../../doc/$pkgname/COPING COPYING
+}
