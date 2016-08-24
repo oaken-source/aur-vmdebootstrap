@@ -24,7 +24,7 @@ source=("http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-$pkg
 md5sums=('90dd5a8aff602273c76644dda166e3e7'
          '9ec42862d167c76139f453ed9651dd8e'
          '3c3d9df067faa0d742011ad0943427e9'
-         '073ecc1134ce3bd2cd4febf02a0264f1')
+         '806fd64966193e9ae0fb4ab56ab7f3f9')
 
 
 prepare() {
@@ -32,6 +32,7 @@ prepare() {
 
   patch -p1 < ../python_version.patch
   patch -p1 < ../default_arch.patch
+  patch -p1 < ../fix_path.patch
 }
 
 package() {
