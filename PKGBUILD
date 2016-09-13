@@ -1,6 +1,6 @@
 # Maintainer: Andreas Grapentin <andreas@grapentin.org>
 pkgname=vmdebootstrap
-pkgver=1.6
+pkgver=1.5
 pkgrel=1
 pkgdesc="Create Debian disk images"
 arch=('i686' 'x86_64')
@@ -14,6 +14,7 @@ depends=('debootstrap'
          'parted'
          'multipath-tools'
          'python2-cliapp'
+	 'python2-setuptools'
          'distro-info')
 
 source=("http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-$pkgver.tar.gz"
@@ -21,7 +22,7 @@ source=("http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-$pkg
         'default_arch.patch'
         'fix_path.patch')
 
-md5sums=('90dd5a8aff602273c76644dda166e3e7'
+md5sums=('65d7a3744107266df0dbca1cc929153d'
          '9ec42862d167c76139f453ed9651dd8e'
          '3c3d9df067faa0d742011ad0943427e9'
          '806fd64966193e9ae0fb4ab56ab7f3f9')
