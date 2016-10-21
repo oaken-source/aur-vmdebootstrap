@@ -14,7 +14,7 @@ depends=('debootstrap'
          'parted'
          'multipath-tools'
          'python2-cliapp'
-	 'python2-setuptools'
+         'python2-setuptools'
          'distro-info')
 
 source=("http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-$pkgver.tar.gz"
