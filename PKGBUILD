@@ -2,10 +2,10 @@
 pkgname=vmdebootstrap
 pkgver=1.6
 pkgrel=1
-pkgdesc="Create Debian disk images"
+pkgdesc="debootstrap installs a basic Debian system into a directory, for use with chroot(8). vmdeboostrap is a wrapper around it to install Debian into a disk image, which can be used with a virtual machine (such as KVM)."
 arch=('i686' 'x86_64')
 
-url="http://git.liw.fi/cgi-bin/cgit/cgit.cgi/vmdebootstrap/"
+url="http://liw.fi/vmdebootstrap/"
 license=('GPL3')
 
 depends=('debootstrap'
