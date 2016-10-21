@@ -1,12 +1,15 @@
-diff -rupN vmdebootstrap-1.6/bin/vmdebootstrap vmdebootstrap-1.6.new/bin/vmdebootstrap
---- vmdebootstrap-1.6/bin/vmdebootstrap	2016-08-11 23:13:45.000000000 +0200
-+++ vmdebootstrap-1.6.new/bin/vmdebootstrap	2016-08-23 16:18:06.949870328 +0200
-@@ -44,6 +44,8 @@ __version__ = '1.6'
- # pylint: disable=invalid-name,line-too-long
- # pylint: disable=missing-docstring,too-many-statements
+diff -rupN vmdebootstrap-0.5/vmdebootstrap vmdebootstrap-0.5.new/vmdebootstrap
+--- vmdebootstrap-0.5/vmdebootstrap	2014-11-16 16:10:24.000000000 +0100
++++ vmdebootstrap-0.5.new/vmdebootstrap	2016-09-13 15:15:54.149993091 +0200
+@@ -26,9 +26,10 @@ import subprocess
+ import tempfile
+ import time
+ 
+-
+ __version__ = '0.5'
  
 +os.environ['PATH'] = '/bin:/sbin:/usr/bin:/usr/sbin:' + os.environ['PATH']
 +
  
- class VmDebootstrap(cliapp.Application):  # pylint: disable=too-many-public-methods
+ class VmDebootstrap(cliapp.Application):
  

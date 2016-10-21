@@ -1,6 +1,6 @@
 # Maintainer: Andreas Grapentin <andreas@grapentin.org>
 pkgname=vmdebootstrap
-pkgver=1.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Create Debian disk images"
 arch=('i686' 'x86_64')
@@ -22,10 +22,10 @@ source=("http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$pkgname/snapshot/$pkgname-$pkg
         'default_arch.patch'
         'fix_path.patch')
 
-md5sums=('5eb3152436c64957eb61299f1cd495d2'
-         '7a15de579dcecaaba83554dbb3760780'
-         '3c3d9df067faa0d742011ad0943427e9'
-         '806fd64966193e9ae0fb4ab56ab7f3f9')
+md5sums=('4a6ca9ac18e9a9b906e74620c3993d16'
+         'd472f9f42e356d76dc20d4a46ac2d39f'
+         'c9d9f83dd199be54507e52169e1873b2'
+         'f6326700d8a7bfbd4cf6460545cff4f6')
 
 
 prepare() {
@@ -37,9 +37,14 @@ prepare() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  mkdir -p ${pkgdir}/usr/bin
+  install -g0 -o0 -m 0755 vmdebootstrap ${pkgdir}/usr/bin/
+  mkdir -p ${pkgdir}/usr/local/man/man8
+  install -g0 -o0 -m 0644 vmdebootstrap.8.in ${pkgdir}/usr/local/man/man8/vmdebootstrap.8
+  gzip ${pkgdir}/usr/local/man/man8/vmdebootstrap.8
+
   mkdir -p ${pkgdir}/usr/share/doc/$pkgname
   cp COPYING ${pkgdir}/usr/share/doc/$pkgname
   cp README ${pkgdir}/usr/share/doc/$pkgname
